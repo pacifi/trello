@@ -30,21 +30,29 @@
       </div>
     </div>
     <div class="flex items-center">
-      <button
-        type="button"
-        class="flex rounded-full"
-        aria-expanded="false"
-        type="button"
-        (click)="isOpen=!isOpen"
-        cdkOverlayOrigin
-        #menuOverlay="cdkOverlayOrigin"
-      >
-        <img
-          class="w-8 h-8 rounded-full"
-          src="https://api.lorem.space/image/face?w=400&h=400"
-          alt="user photo"
-        />
-      </button>
+      <div class="space-x-2 flex">
+        <button class="text-white" type="button">
+          <fa-icon [icon]="faBell"></fa-icon>
+        </button>
+        <button class="text-white" type="button">
+          <fa-icon [icon]="faInfoCircle"></fa-icon>
+        </button>
+        <button
+          type="button"
+          class="flex rounded-full"
+          aria-expanded="false"
+          type="button"
+          (click)="isOpen=!isOpen"
+          cdkOverlayOrigin
+          #menuOverlay="cdkOverlayOrigin"
+        >
+          <img
+            class="w-8 h-8 rounded-full"
+            src="https://api.lorem.space/image/face?w=400&h=400"
+            alt="user photo"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </nav>
@@ -110,11 +118,8 @@
     </ul>
     <ul class="py-1">
       <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700"
-        >Log out</a
-        >
+        <a href="#"
+           class="block py-2 px-4 text-sm text-gray-700">Log out</a>
       </li>
     </ul>
   </div>
