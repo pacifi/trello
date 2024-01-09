@@ -5,6 +5,11 @@ import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardComponent } from './pages/board/board.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.component';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { SharedModule } from "@shared/shared.module";
+import { CdkAccordionModule } from "@angular/cdk/accordion";
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { DialogModule } from "@angular/cdk/dialog";
 
 
 @NgModule({
@@ -15,7 +20,14 @@ import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.compon
   ],
   imports: [
     CommonModule,
-    BoardsRoutingModule
+    BoardsRoutingModule,
+    DragDropModule,
+    SharedModule,
+    CdkAccordionModule,
+    DialogModule,
+    FontAwesomeModule,
+
   ]
 })
-export class BoardsModule { }
+export class BoardsModule {
+}

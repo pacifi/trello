@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, Validators } from "@angular/forms";
-import { CustomValidators } from "../../../../utils/validators";
+import { CustomValidators } from "@utils/validators";
+
 
 @Component({
   selector: 'app-recovery-form',
