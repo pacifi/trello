@@ -2,13 +2,9 @@ import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
+import { Product } from "../../models/product.models";
 
-interface Product {
-  id: string,
-  title: string;
-  price: number
-  images: string[]
-}
+
 
 @Component({
   selector: 'app-scroll',
