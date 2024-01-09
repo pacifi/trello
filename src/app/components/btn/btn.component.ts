@@ -18,6 +18,7 @@ export class BtnComponent {
 
   get colors() {
     const classes = {
+      'text-white': this.color === 'success' || this.color === 'primary' || this.color === 'red',
       'bg-success-700': this.color === 'success',
       'hover:bg-success-800': this.color === 'success',
       'focus:ring-success-300': this.color === 'success',
@@ -30,8 +31,10 @@ export class BtnComponent {
       'bg-sky-700': this.color === 'sky',
       'hover:bg-sky-800': this.color === 'sky',
       'focus:ring-sky-300': this.color === 'sky',
+      'bg-grey-200': this.color === 'gray-light',
+      'hover:bg-grey-500': this.color === 'gray-light',
+      'focus:ring-grey-59': this.color === 'gray-light',
     };
-    console.log(classes);  // Agrega este console.log para imprimir las clases en la consola
     return classes;
   }
 }
