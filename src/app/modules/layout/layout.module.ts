@@ -20,6 +20,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
     OverlayModule,
     FontAwesomeModule,
     SharedModule,
+
   ]
 })
 export class LayoutModule {
