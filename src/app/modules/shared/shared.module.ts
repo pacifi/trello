@@ -8,6 +8,9 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
   declarations: [
     ButtonComponent
   ],
+  exports: [
+    ButtonComponent
+  ],
   imports: [
     CommonModule, FontAwesomeModule
   ]
