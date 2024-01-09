@@ -22,8 +22,7 @@
       </p>
       <p
         *ngIf="form.controls.email.hasError('email')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
-      >
+        class="font-medium text-red-500 text-xs mt-1 ml-1">
         This field should be a email
       </p>
     </div>
@@ -43,8 +42,7 @@
     <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
       <p
         *ngIf="form.controls.password.hasError('required')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
-      >
+        class="font-medium text-red-500 text-xs mt-1 ml-1">
         This field is mandatory
       </p>
       <p
@@ -55,12 +53,18 @@
       </p>
     </div>
   </div>
+  <div *ngIf="status === 'failed'">
+    <p class="font-medium text-red-500 text-sm mt-1 ml-1">
+      Credentials are invalid
+    </p>
+  </div>
   <div>
     <app-btn
       typeBtn="submit"
       color="success"
       [loading]="status === 'loading'"
-    >Login</app-btn
+    >Login
+    </app-btn
     >
   </div>
 </form>
