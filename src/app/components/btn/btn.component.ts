@@ -14,27 +14,49 @@ import { NgClass } from "@angular/common";
 export class BtnComponent {
 
   @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
-  @Input() color: string = 'primary';
+  @Input() color: 'success' | 'primary' | 'danger' | 'light' | 'sky' = 'primary';
+
+  mapColors = {
+    success: {
+      'text-white': true,
+      'bg-success-700': true,
+      'hover:bg-success-800': true,
+      'focus:ring-success-300': true,
+    },
+    primary: {
+      'text-white': true,
+      'bg-primary-700': true,
+      'hover:bg-primary-800': true,
+      'focus:ring-primary-300': true,
+    }
+    ,
+    danger:
+      {
+        'bg-danger-700': true,
+        'hover:bg-danger-800': true,
+        'focus:ring-danger-300': true,
+        'text-white': true,
+      },
+    light: {
+      'bg-grey-200': true,
+      'hover:bg-grey-500': true,
+      'focus:ring-grey-50': true,
+      'text-gray-700': true
+
+    },
+    sky: {
+      'bg-sky-700': true,
+      'hover:bg-sky-800': true,
+      'focus:ring-sky-300': true,
+      'text-gray-700': true
+    }
+  }
 
   get colors() {
-    const classes = {
-      'text-white': this.color === 'success' || this.color === 'primary' || this.color === 'red',
-      'bg-success-700': this.color === 'success',
-      'hover:bg-success-800': this.color === 'success',
-      'focus:ring-success-300': this.color === 'success',
-      'bg-primary-700': this.color === 'primary',
-      'hover:bg-primary-800': this.color === 'primary',
-      'focus:ring-primary-300': this.color === 'primary',
-      'bg-red-700': this.color === 'red',
-      'hover:bg-red-800': this.color === 'red',
-      'focus:ring-red-300': this.color === 'red',
-      'bg-sky-700': this.color === 'sky',
-      'hover:bg-sky-800': this.color === 'sky',
-      'focus:ring-sky-300': this.color === 'sky',
-      'bg-grey-200': this.color === 'gray-light',
-      'hover:bg-grey-500': this.color === 'gray-light',
-      'focus:ring-grey-59': this.color === 'gray-light',
-    };
-    return classes;
+    const colors = this.mapColors[this.color];
+    if (colors) {
+      return colors
+    }
+    return {};
   }
 }

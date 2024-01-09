@@ -12,14 +12,12 @@
       <div class="flex items-center">
         <ul class="flex items-center space-x-2 text-sm font-medium">
           <li>
-            <a
-              class="block py-3 px-4 text-white"
+            <a class="block py-3 px-4 text-white"
             >Workspaces</a
             >
           </li>
           <li>
-            <a
-              class="block py-3 px-4 text-white"
+            <a class="block py-3 px-4 text-white"
             >Recent</a
             >
           </li>
@@ -44,8 +42,7 @@
           type="button"
           (click)="isOpen=!isOpen"
           cdkOverlayOrigin
-          #menuOverlay="cdkOverlayOrigin"
-        >
+          #menuOverlay="cdkOverlayOrigin">
           <img
             class="w-8 h-8 rounded-full"
             src="https://api.lorem.space/image/face?w=400&h=400"
@@ -56,12 +53,12 @@
     </div>
   </div>
 </nav>
-
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuOverlay"
-             [cdkConnectedOverlayOpen]="isOpen">
-  <div
-    class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
-  >
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="menuOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+  (overlayOutsideClick)="isOpen =!isOpen">
+  <div class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
     <div class="py-3 px-4 flex justify-between">
       <span class="block text-sm text-center text-gray-900">Account</span>
       <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
@@ -81,39 +78,23 @@
     </div>
     <ul class="py-1">
       <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Profile</a
+        <a href="#"
+           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</a>
+      </li>
+      <li>
+        <a href="#"
+           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Activity</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Cards</a
         >
       </li>
       <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Activity</a
-        >
+        <a href="#"
+           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
       </li>
       <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Cards</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Settings</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Sign out</a
-        >
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Sign out</a>
       </li>
     </ul>
     <ul class="py-1">
