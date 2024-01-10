@@ -8,5 +8,5 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { tokenInterceptor } from "./interceptor/token.interceptor";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(withInterceptors([tokenInterceptor], )), provideToastr(), provideAnimations()]
+  providers: [provideRouter(routes), provideHttpClient(withInterceptors([tokenInterceptor],)), provideToastr(), provideAnimations()]
 };
