@@ -5,8 +5,8 @@ import { TokenService } from "@services/token.service";
 export const authGuard: CanActivateFn = (route, state) => {
   let tokenService = inject(TokenService);
   let router = inject(Router)
-  let token = tokenService.getToken();
-  if (!token) {
+  let isValidToken = tokenService.isValidRefreshToken();
+  if (!isValidToken) {
     router.navigate(['login']).then();
     return false;
   }
