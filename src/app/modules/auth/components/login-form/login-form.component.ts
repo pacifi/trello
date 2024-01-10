@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "@services/auth.service";
 import { ToastrService } from "ngx-toastr";
 import { RequestStatus } from "@models/request-status.models";
@@ -15,6 +15,7 @@ export class LoginFormComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private toastr: ToastrService = inject(ToastrService);
+  private route = inject(ActivatedRoute);
   form = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
@@ -32,6 +33,16 @@ export class LoginFormComponent {
   faEyeSlash = faEyeSlash;
   showPassword = false;
   status: RequestStatus = 'init'
+
+
+  constructor() {
+    this.route.queryParamMap.subscribe(params => {
+      const email = params.get('email');
+      if (email) {
+        this.form.controls.email.setValue(email);
+      }
+    })
+  }
 
   doLogin() {
     console.log("On login");

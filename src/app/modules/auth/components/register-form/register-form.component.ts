@@ -46,12 +46,12 @@ export class RegisterFormComponent {
     if (this.form.valid) {
       this.status = 'loading';
       const {name, email, password} = this.form.getRawValue();
-      this.authService.register(name, email, password).subscribe(
+      this.authService.registerAndLogin(name, email, password).subscribe(
         {
           next: () => {
             this.status = 'success';
             this.toastr.success('Usuario creado', 'Usuario creado')
-            this.router.navigate(['/login']).then(r => r);
+            this.router.navigate(['/app/boards']).then(r => r);
           },
           error: (err) => {
             this.status = 'failed'
@@ -81,7 +81,7 @@ export class RegisterFormComponent {
 
           } else {
             this.toastr.warning('Usted puede logearse', 'Usuario existente');
-            this.router.navigate(['/login']).then(r => r);
+            this.router.navigate(['/login'], {queryParams: {email}}).then(r => r);
             this.showRegisterForm = false;
           }
 
