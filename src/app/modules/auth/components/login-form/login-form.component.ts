@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from "@angular/router";
 import { AuthService } from "@services/auth.service";
@@ -45,7 +45,7 @@ export class LoginFormComponent {
             next: () => {
               this.status = 'success'
               this.toastr.success('Bien venido', 'Login Completo')
-              this.router.navigate(['app']);
+              this.router.navigate(['app']).then((r) => r);
             },
             error: () => {
               this.toastr.error('Pruebe de nuevo', 'Problema de Authenticación')
