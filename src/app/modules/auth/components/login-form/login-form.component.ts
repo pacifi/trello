@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from "@angular/router";
 import { AuthService } from "@services/auth.service";
@@ -11,15 +11,22 @@ import { RequestStatus } from "@models/request-status.models";
   templateUrl: './login-form.component.html'
 })
 export class LoginFormComponent {
-  private formBuilder = inject(FormBuilder);
+
   private authService = inject(AuthService);
   private router = inject(Router);
   private toastr: ToastrService = inject(ToastrService);
+  form = new FormGroup({
+    email: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email]
+    }),
+    password: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(8)]
+    })
+  })
 
-  form = this.formBuilder.nonNullable.group({
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-  });
+
   faPen = faPen;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
@@ -27,6 +34,8 @@ export class LoginFormComponent {
   status: RequestStatus = 'init'
 
   doLogin() {
+    console.log("On login");
+    console.log(this.form);
     if (this.form.valid) {
       this.status = 'loading';
       const {email, password} = this.form.getRawValue();
