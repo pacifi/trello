@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from "@environments/environment";
 import { pipe, switchMap, tap } from 'rxjs';
@@ -16,6 +16,7 @@ export class AuthService {
   private tokenService = inject(TokenService);
   apiUrl = environment.API_URL;
   headers = {};
+  user$ = signal<User | null>(null)
 
   constructor() {
     this.headers = {
@@ -59,6 +60,13 @@ export class AuthService {
   getProfile() {
     return this.httpClient.get<User>(`${this.apiUrl}/api/v1/auth/profile`,
       {headers: this.headers})
+      .pipe(tap({
+        next: (data) => {
+          this.user$.set(data);
+        }, error: (err) => {
+          console.log("error pipe")
+        }
+      }));
   }
 
   logout() {

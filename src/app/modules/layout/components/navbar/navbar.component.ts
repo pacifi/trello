@@ -8,7 +8,7 @@ import { User } from "@models/user.models";
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
 
   isOpenOverlayAvatar = false;
@@ -20,19 +20,7 @@ export class NavbarComponent implements OnInit {
 
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router)
-  user: User | null = null;
-
-  ngOnInit(): void {
-    this.authService.getProfile()
-      .subscribe({
-        next: (data) => {
-          this.user = data;
-        },
-        error: (err) => {
-
-        }
-      });
-  }
+  user$ = this.authService.user$;
 
 
   logout() {
