@@ -4,6 +4,7 @@ import { environment } from "@environments/environment";
 import { pipe, switchMap, tap } from 'rxjs';
 import { TokenService } from "@services/token.service";
 import { ResponseLogin } from "@models/auth.models";
+import { User } from "@models/user.models";
 
 
 @Injectable({
@@ -14,8 +15,12 @@ export class AuthService {
   private httpClient = inject(HttpClient);
   private tokenService = inject(TokenService);
   apiUrl = environment.API_URL;
+  headers = {};
 
   constructor() {
+    this.headers = {
+      Authorization: `Bearer ${this.tokenService.getToken()}`
+    }
   }
 
   login(email: string, password: string) {
@@ -49,6 +54,11 @@ export class AuthService {
 
   changePassword(token: string, newPassword: string) {
     return this.httpClient.post(`${this.apiUrl}/api/v1/auth/change-password`, {token, newPassword});
+  }
+
+  getProfile() {
+    return this.httpClient.get<User>(`${this.apiUrl}/api/v1/auth/profile`,
+      {headers: this.headers})
   }
 
   logout() {
