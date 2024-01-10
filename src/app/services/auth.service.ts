@@ -5,6 +5,7 @@ import { pipe, switchMap, tap } from 'rxjs';
 import { TokenService } from "@services/token.service";
 import { ResponseLogin } from "@models/auth.models";
 import { User } from "@models/user.models";
+import { checkToken } from "../interceptor/token.interceptor";
 
 
 @Injectable({
@@ -59,7 +60,7 @@ export class AuthService {
 
   getProfile() {
     return this.httpClient.get<User>(`${this.apiUrl}/api/v1/auth/profile`,
-      {headers: this.headers})
+      {context: checkToken()})
       .pipe(tap({
         next: (data) => {
           this.user$.set(data);

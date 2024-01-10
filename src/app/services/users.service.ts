@@ -4,6 +4,7 @@ import { TokenService } from "@services/token.service";
 import { environment } from "@environments/environment";
 import { ResponseLogin } from "@models/auth.models";
 import { User } from "@models/user.models";
+import { checkToken } from "../interceptor/token.interceptor";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class UsersService {
   getUsers() {
 
     return this.httpClient.get<User[]>(`${this.apiUrl}/api/v1/users`, {
-      headers: this.headers
+      context: checkToken()
     });
   }
 
